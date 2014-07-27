@@ -7,9 +7,9 @@ train_data <- get_data("train")  																    # read the training data se
 test_data  <- get_data("test")   																    # read the test data set
 merge_data <- rbind(train_data,test_data) 														    # merge the two data sets just read
 colunms_selected <- c(562,563,grep("mean",names(merge_data),ignore.case="TRUE"),grep("std",names(merge_data),ignore.case="TRUE")) # Filter out all the columns with mean and std dev
-summary_data <- merge_data[,columns_selected] 														    # create a subset of the merged data set with only the columns containing mean and std dev
+summary_data <- merge_data[,colunms_selected] 														    # create a subset of the merged data set with only the columns containing mean and std dev
 summarized_data <-aggregate(summary_data, by=list(summary_data$Activity,summary_data$Subject),FUN=mean, na.rm=TRUE) 		    # summarized the mean and std dev by Subject and then Activity
-write.table(summarized_data,row.names="TURE",col.names="TURE") 																	    # write the summarized data set out
+write.table(summarized_data,file="D:/Downloads/R programming/Project/tidy_data.txt",row.names=FALSE,col.names=TURE) 		    # writes the tidy data to a text file call tidy_data																	    # write the summarized data set out
 
 }
 
